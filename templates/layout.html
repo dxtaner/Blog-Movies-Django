@@ -1,0 +1,54 @@
+{% load static %}
+{% load tz %}
+{% now "Y" as current_year %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <style>
+        body {
+            background: linear-gradient( #ecb7bd, #ddf37b);
+            margin-bottom: 150px;
+            margin-top: 75px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% include "includes/navbar.html" %}
+        {% if messages %}
+            {% for message in messages %}
+                <div{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        <br><br><br>
+        <div class="container">
+            {% block body %} 
+            {% endblock %}
+        </div>
+    </div>
+
+    <hr class="my-4" style="border-top: 10px solid #ff9900" />
+
+    <footer class="footer mt-auto py-3">
+        <div class="container">
+            <span class="text-muted">
+                Film Blogum &copy; {{ current_year }} -
+                <a href="https://github.com/dxtaner" target="_blank">@dxtaner </a>
+                Tarafından yapıldı
+            </span>
+        </div>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>
