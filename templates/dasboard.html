@@ -1,0 +1,48 @@
+{% extends "layout.html" %} {% block body %}
+<div class="container">
+  <h2 class="my-2">Kontrol Panelim</h2>
+  <hr class="my-4" style="border-top: 3px solid #ff9900" />
+
+  <p>Hoşgeldiniz, <strong>{{ request.user.username }}</strong></p>
+  <hr />
+
+  <a href="/filmler/addfilm" class="btn btn-warning mb-4">Film Ekleyin</a>
+
+  {% if filmler %}
+  <table class="table table-bordered table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Film Başlığı</th>
+        <th scope="col">Yazar</th>
+        <th scope="col">Yayınlama Tarihi</th>
+        <th scope="col">İşlemler</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for film in filmler %}
+      <tr>
+        <th scope="row">{{ film.id }}</th>
+        <td><a href="/filmler/film/{{ film.id }}">{{ film.title }}</a></td>
+        <td>{{ film.author.username }}</td>
+        <td>{{ film.created_date|date:"d F Y, H:i" }}</td>
+        <td>
+          <a
+            href="/filmler/update/{{ film.id }}"
+            class="btn btn-success btn-sm mr-2"
+            >Güncelle</a
+          >
+          <a href="/filmler/delete/{{ film.id }}" class="btn btn-danger btn-sm"
+            >Sil</a
+          >
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  {% else %}
+  <div class="alert alert-danger mt-4">Henüz Film Bulunmuyor..!</div>
+  {% endif %}
+</div>
+{% endblock body %}
