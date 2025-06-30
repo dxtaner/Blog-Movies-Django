@@ -1,0 +1,84 @@
+{% extends "layout.html" %} {% block body %}
+<div class="container">
+  <div class="col-lg-12">
+    <h1 class="mt-2 text-dark font-weight-bold">{{film.title}}</h1>
+    <p class="lead text-muted">
+      by {{film.author.username}} || {{film.created_date|date:"F d, Y H:i"}}
+    </p>
+    <hr class="border-top my-2" />
+
+    {% if film.film_image.url %}
+    <div class="my-4">
+      <img
+        class="img-fluid rounded"
+        src="{{film.film_image.url}}"
+        alt="{{film.title}}" />
+    </div>
+    <hr class="border-top my-4" />
+    {% endif %}
+
+    <p class="lead">{{film.content|safe}}</p>
+    <hr class="my-4" style="border-top: 3px solid #ff9900" />
+
+    <h4 class="my-4">Yorumlar</h4>
+    <hr class="border-top my-4" />
+
+    {% if comments %}
+    <div class="media mb-4">
+      <div class="media-body">
+        {% for comment in comments %}
+        <div class="media mb-4">
+          <img
+            src="https://placekitten.com/50/50"
+            class="mr-3 rounded-circle"
+            alt="{{ comment.comment_author }}" />
+          <div class="media-body">
+            <h5 class="mt-0">{{ comment.comment_author }}</h5>
+            <small class="text-muted"
+              >Yorum tarihi: {{ comment.comment_date }}</small
+            >
+            <p>{{ comment.comment_content }}</p>
+          </div>
+        </div>
+        <hr class="border-top my-3" />
+        {% endfor %}
+      </div>
+    </div>
+    {% else %}
+    <div class="alert alert-danger">Bu filme henüz yorum yapılmamış.</div>
+    {% endif %}
+
+    <hr class="my-4" style="border-top: 3px solid #ff9900" />
+
+    <div class="custom-card mt-4">
+      <div class="custom-card-header">
+        <h5>Yorum Ekleyin</h5>
+      </div>
+      <div class="custom-card-body">
+        <form method="post" action="/filmler/comment/{{film.id}}">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="comment_author">Adınız</label>
+            <input
+              name="comment_author"
+              type="text"
+              class="form-control"
+              id="comment_author"
+              placeholder="Adınızı girin" />
+          </div>
+          <div class="form-group">
+            <label for="comment_content">Yorumunuz</label>
+            <textarea
+              name="comment_content"
+              class="form-control"
+              id="comment_content"
+              rows="3"
+              placeholder="Yorumunuzu buraya yazın"></textarea>
+          </div>
+          <button type="submit" class="btn btn-warning">Yorum Ekle</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
