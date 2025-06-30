@@ -12,7 +12,8 @@
       <img
         class="img-fluid rounded"
         src="{{film.film_image.url}}"
-        alt="{{film.title}}" />
+        alt="{{film.title}}"
+      />
     </div>
     <hr class="border-top my-4" />
     {% endif %}
@@ -31,7 +32,8 @@
           <img
             src="https://placekitten.com/50/50"
             class="mr-3 rounded-circle"
-            alt="{{ comment.comment_author }}" />
+            alt="{{ comment.comment_author }}"
+          />
           <div class="media-body">
             <h5 class="mt-0">{{ comment.comment_author }}</h5>
             <small class="text-muted"
@@ -64,7 +66,8 @@
               type="text"
               class="form-control"
               id="comment_author"
-              placeholder="Adınızı girin" />
+              placeholder="Adınızı girin"
+            />
           </div>
           <div class="form-group">
             <label for="comment_content">Yorumunuz</label>
@@ -73,7 +76,8 @@
               class="form-control"
               id="comment_content"
               rows="3"
-              placeholder="Yorumunuzu buraya yazın"></textarea>
+              placeholder="Yorumunuzu buraya yazın"
+            ></textarea>
           </div>
           <button type="submit" class="btn btn-warning">Yorum Ekle</button>
         </form>
