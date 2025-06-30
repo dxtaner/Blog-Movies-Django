@@ -1,0 +1,82 @@
+{% extends "layout.html" %} {% block body %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="jumbotron text-center bg-dark text-light">
+        <h1 class="display-3">Hoş Geldiniz</h1>
+        <p class="lead">En iyi filmleri burada bulun!</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <form class="d-flex align-items-center">
+      {% csrf_token %}
+      <input
+        type="text"
+        name="keyword"
+        class="form-control me-2"
+        placeholder="İstediğiniz filmi arayın..."
+        aria-label="Film ara" />
+      <button type="submit" class="btn btn-warning">Ara</button>
+    </form>
+  </div>
+</div>
+
+<div class="container">
+  {% if filmler %} {% for film in filmler %}
+  <div class="row">
+    <div class="col-md-12">
+      <!-- Post Content Column -->
+      <a href="/filmler/film/{{film.id}}" class="text-decoration-none">
+        <h2 class="mt-4">{{film.title}}</h2>
+      </a>
+
+      <!-- Author -->
+      <p class="lead">
+        <strong class="text-danger">{{film.author.username}}</strong>
+        tarafından yazıldı.
+      </p>
+
+      <hr class="my-2" />
+
+      <!-- Published Date -->
+      <p class="text-muted">
+        Yayınlanma Tarihi: {{film.created_date|date:"d F Y, H:i"}}
+      </p>
+
+      <hr class="my-2" />
+      <!-- Preview Image -->
+      <!-- {% if film.film_image %}
+      <p>
+        Resim Yüklenmiş: <a href="{{ film.film_image.url }}">Yüklenen Resim</a>
+      </p>
+      <img
+        class="img-fluid rounded"
+        src="{{film.film_image.url}}"
+        alt="{{film.title}}" />
+      {% endif %} -->
+
+      <!-- <hr /> -->
+
+      <!-- Post Content -->
+      <p>{{ film.content|safe|truncatewords:50 }}</p>
+      <div class="text-end">
+        <a href="/filmler/film/{{ film.id }}" class="btn btn-sm btn-warning"
+          >Devamını Oku</a
+        >
+      </div>
+      <hr class="my-4" style="border-top: 3px solid #ff9900" />
+    </div>
+  </div>
+  {% endfor %} {% else %}
+  <div class="row">
+    <div class="col-md-10">
+      <div class="alert alert-danger">Henüz film bulunmamaktadır.</div>
+    </div>
+  </div>
+  {% endif %}
+</div>
+{% endblock body %}
