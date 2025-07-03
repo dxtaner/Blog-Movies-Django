@@ -1,0 +1,52 @@
+# Python derleyici dosyaları
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Sanal ortam klasörleri
+venv/
+env/
+ENV/
+.venv/
+
+# VS Code, PyCharm gibi IDE dosyaları
+.vscode/
+.idea/
+
+# Django cache, db ve media dosyaları
+*.log
+*.pot
+*.pyc
+*.sqlite3
+db.sqlite3
+media/
+staticfiles/
+
+# Migrations (isteğe bağlı, genelde takip edilir)
+# Eğer takip etmek istemiyorsanız şu satırı ekleyin:
+# */migrations/
+# */migrations/*.pyc
+
+# Ortam değişkenleri
+.env
+.env.*
+
+# __MACOSX gibi sistem dosyaları
+.DS_Store
+
+# Coverage, test ve debug dosyaları
+htmlcov/
+.coverage
+.tox/
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# Heroku
+*.log
+*.pid
+*.seed
+
+# Local ayarlar (opsiyonel)
+local_settings.py
