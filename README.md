@@ -56,3 +56,35 @@ python manage.py createsuperuser
 
 # Start the development server
 python manage.py runserver
+```
+
+--- 
+## 🧪 Features
+
+- ✅ **User registration, login, and logout**
+- 🎬 **Create, read, update, and delete (CRUD) films**
+- 💬 **Comment system for films**
+- 🔐 **Protected views for authenticated users**
+- 📁 **Clean and modular URL management**
+
+---
+
+## 📌 Notes
+
+- The path `/dasboard/` may contain a typo. Consider renaming it to `/dashboard/`.
+
+### Potential Improvements:
+
+- Add user profile pages  
+- Categorize films (genre-based)  
+- Like/dislike system  
+- REST API support with Django REST Framework  
+
+---
+
+## 👨‍💻 Developer
+
+**Taner Özer**  
+GitHub: [@dxtaner](https://github.com/dxtaner)  
+Email: [tanerozer16@gmail.com](mailto:tanerozer16@gmail.com)
+
