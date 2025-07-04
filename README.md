@@ -4,6 +4,15 @@ This is a film sharing platform built with Django. Users can register, log in, a
 
 ---
 
+## 📽️ Project Demo
+
+![Django Films Demo](https://github.com/dxtaner/Blog-Movies-Django/blob/main/ProjectGifs/DjangoFilmsOne.gif)
+![Django Films Demo](https://github.com/dxtaner/Blog-Movies-Django/blob/main/ProjectGifs/DjangoFilmsTwo.gif)
+![Django Films Demo](https://github.com/dxtaner/Blog-Movies-Django/blob/main/ProjectGifs/DjangoFilmsThree.gif)
+![Django Films Demo](https://github.com/dxtaner/Blog-Movies-Django/blob/main/ProjectGifs/DjangoFilmsFour.gif)
+
+---
+
 ## 📁 Project Structure
 
 The project includes two main Django apps:
